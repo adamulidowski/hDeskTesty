@@ -1,0 +1,226 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-05-18, 17:38:45
+    Author     : Adam11
+*/
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400,700&subset=latin,latin-ext);
+
+body{
+    background-color:#404040;
+
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+
+a:hover {
+    color:white;
+}
+
+
+
+
+#menu{
+	font-family: 'Josefin Sans', sans-serif;   
+    background-color:  #303030;
+	z-index: 1;
+	width:100%;
+    line-height:45px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+
+
+#kontener{
+    margin-top:7%;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:5%;
+}
+
+
+#nav{
+    float: inside;
+    font-size:18px;
+    text-align:center;
+    overflow:hidden;
+}
+
+ul#nav li{
+    width:160px;
+    list-style-type:none;
+    float:left;
+    background-color:  #303030;
+    margin-left:3px;
+}
+
+
+
+ul#nav li:hover{
+    
+    border-radius:3px;
+    cursor: pointer;
+    list-style-type: none;
+    font-weight: bold;
+    float:left;
+    background-color:black;
+}
+
+
+ul#nav li a{
+	color:white;
+    display: block;
+    text-decoration: none;
+    position:relative; 
+}
+
+
+ul#nav li li a{
+    width:160px;
+}
+
+ul#nav li ul{
+    font-size:12px;
+    overflow: hidden;
+    display: none;
+}
+
+ul#nav li:hover ul{
+    position: absolute;
+    padding: 0;
+    display: block;
+    width: 160px;
+}
+
+.opcje1{
+    float:end;
+    color:white;
+    font-size: 18px;
+    padding:10px;
+}
+
+.opcje1:hover{
+    background-color:black;
+    color:white;
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
+}
+
+#tytul{
+    font-family: 'Josefin Sans', sans-serif;
+    line-height:100px;
+    width: 100%;
+    color:white;
+    font-size:50px;
+    text-align:center;
+    height:100px;
+    background-color: #128870;  
+}
+
+
+img{
+    margin:auto;
+}
+
+
+#tresc1{
+    background-color: #dedede;
+    font-family: "Arial";
+    margin-top:1%;
+    width: 96%;
+    min-height: 500px;
+    text-align:justify;
+    padding-top: 2%;
+    padding-left:2%;
+    padding-right:2%;
+    padding-bottom:5%;
+    border-radius: 0 60px 0 0;
+}
+
+#ukryj{
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-size:20px;
+    display: block;
+    height: 50px;
+    width: 200px;
+    background-color: #128870;
+    border:none;
+    text-align:center;
+    float:right;
+}
+
+#ukryj:hover{
+        cursor: pointer;
+}
+
+#wyloguj{
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-size:20px;
+    display: block;
+    height: 50px;
+    width: 200px;
+    background-color: #B04862;
+    border:none;
+    text-align:center;
+}
+
+#wyloguj:hover{
+        cursor: pointer;
+}
+
+img{
+    width:90%; 
+    margin:auto;
+}
+
+#tresc2{
+    font-family: "Arial";
+    display: none;
+    width: 100%;
+    float:right;
+    background-color: #dedede;
+    min-height: 300px;
+    text-align:justify;
+    padding-top: 0%;
+    padding-left:2%;
+    padding-right:2%;
+    padding-bottom:5%;
+}
+
+#stopka{
+    height:45px;
+    line-height: 45px;
+    clear:both;
+    color:white;
+    background-color: black;
+    text-align:center;
+    font-size:18px;
+    left: 0;
+    right: 0;
+    bottom:0;
+
+}
+
+#rozw{
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 2%;
+    color:white;
+    float: right;
+    background-color: #128870;
+    
+}
