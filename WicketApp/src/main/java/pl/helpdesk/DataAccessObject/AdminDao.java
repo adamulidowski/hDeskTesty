@@ -10,16 +10,16 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import pl.helpdesk.DataModel.EmployeeDataModel;
+import pl.helpdesk.DataModel.AdminDataModel;
+import pl.helpdesk.DataModel.UserDataModel;
 
-
-public class EmployeeDao {
+public class AdminDao {
 	
 	private EntityManagerFactory entityMF =  Persistence.createEntityManagerFactory("baza");
     private EntityManager entityM =entityMF.createEntityManager();
     private CriteriaBuilder builder = entityM.getCriteriaBuilder();
-    private CriteriaQuery<EmployeeDataModel> criteriaQuery = builder.createQuery(EmployeeDataModel.class);
-    private Root <EmployeeDataModel> employee=criteriaQuery.from(EmployeeDataModel.class);
+    private CriteriaQuery<AdminDataModel> criteriaQuery = builder.createQuery(AdminDataModel.class);
+    private Root <AdminDataModel> admin=criteriaQuery.from(AdminDataModel.class);
 
     
 	public void closeConection(){
@@ -27,14 +27,13 @@ public class EmployeeDao {
 	     entityMF.close();
 	}
 	
-    public List <EmployeeDataModel> createEmployeeList(){
+    public List <AdminDataModel> createAdminList(){
     	
-    	criteriaQuery.select(employee);
+    	criteriaQuery.select(admin);
 		
-		TypedQuery<EmployeeDataModel> query=entityM.createQuery(criteriaQuery);
+		TypedQuery<AdminDataModel> query=entityM.createQuery(criteriaQuery);
 		
-		List <EmployeeDataModel> employees=query.getResultList();
-		return employees;
+		List <AdminDataModel> admins=query.getResultList();
+		return admins;
     }
 }
-

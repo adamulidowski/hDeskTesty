@@ -151,14 +151,11 @@ public boolean czyBlokowany(String Login){
         } else if(rodzaj == 4){
         	AdminDataModel adminDataModel = new AdminDataModel();
         	adminDataModel.setId_uzytkownika(userDataModel.getId());
-        	
             entityM.getTransaction().begin();
             entityM.persist(adminDataModel);
             entityM.getTransaction().commit();
         }
-        
 
-        
 	}
 	
 //    public void addEmployee(int id_uzytkownika){
@@ -174,7 +171,28 @@ public boolean czyBlokowany(String Login){
 //	}
 	
 	
+	public int userType(String login){
+		
+		
+		AdminDao adminDao=new AdminDao();
+		EmployeeDao employeeDao= new EmployeeDao();
 	
+		for (EmployeeDataModel employeeDM : employeeDao.createEmployeeList()) {
+			if(employeeDM.getId_uzytkownika()==(findUserId(login))){
+				return 2;
+			}		
+		}	
+		for (AdminDataModel adminDM : adminDao.createAdminList()) {
+			if(adminDM.getId_uzytkownika()==(findUserId(login))){
+				return 1;
+			}		
+		}	
+		
+
+
+		return 0;
+
+	}
 	
 	
 	
