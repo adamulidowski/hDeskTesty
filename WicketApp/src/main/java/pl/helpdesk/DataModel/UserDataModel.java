@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,31 +16,34 @@ import javax.persistence.TemporalType;
 //Klasa reprezentująca tabelę użytkownicy 
 @Entity
 @Table(name="uzytkownicy")
+
 public class UserDataModel{
 	@Id
 	@GeneratedValue
 	@Column(name="Id_Uzytkownika")
-	int id;
+	private int id;
 	@Column(name="Login")
-	String login;
+	private String login;
 	@Column(name="Haslo")
-	String haslo;
+	private String haslo;
 	@Column(name="Imie")
-	String imie;
+	private String imie;
 	@Column(name="Nazwisko")
-	String nazwisko;
+	private String nazwisko;
 	@Column(name="Email")
-	String email;
+	private String email;
 	
 	@Column(name="Ostatnie_logowanie")
 	@Temporal(TemporalType.DATE)
-	Date ost_logowanie;
+	private Date ost_logowanie;
 	
 	@Column(name="Czy_blokowany")
-	Boolean czy_blokowany;
+	private Boolean czy_blokowany;
 	
 	@Column(name="Czy_usuniety")
-	Boolean czy_usuniety;
+	private Boolean czy_usuniety;
+
+	
 	/**
 	 * @return the id
 	 */

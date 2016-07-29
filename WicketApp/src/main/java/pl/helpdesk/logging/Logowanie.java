@@ -67,12 +67,12 @@ public class Logowanie extends WebPage {
 					UserSession.getInstance().setAttribute("id", userDao.findUserId(UserSession.getInstance().getuSerDataModel().getLogin()));
 					UserSession.getInstance().setAttribute("haslo", userDataModel.getHaslo());
 					UserSession.getInstance().setAttribute("blok", userDao.czyBlokowany(UserSession.getInstance().getuSerDataModel().getLogin()));
-//				try {
-//					userDao.addUser("user2", "user2");
-//				} catch (NoSuchAlgorithmException e) {
-//	
-//					e.printStackTrace();
-//				}
+				try {
+					userDao.addUser("admin1", "admin1", "admin1@wp.pl", "Mariusz", "Róg", 4);
+				} catch (NoSuchAlgorithmException e) {
+	
+					e.printStackTrace();
+				}
 					//companyDao.addCompany("Firma 1", "Lublin", "Nadbystrzycka", "23564", "21 b");
 					//userDao.closeConection();
 					setResponsePage(Panel.class); 
