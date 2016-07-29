@@ -1,4 +1,4 @@
-package pl.helpdesk.userpanel;
+package pl.helpdesk.employeePages;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -8,14 +8,14 @@ import org.apache.wicket.markup.html.form.Form;
 import pl.helpdesk.logging.Logowanie;
 import pl.helpdesk.userSession.UserSession;
 
-public class AdminPanel extends WebPage{
+public class EmployeePanel extends WebPage{
 		
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public AdminPanel(){
+		public EmployeePanel(){
 			String result = ""; 
 			String result2= "";
 			result = String.valueOf(UserSession.getInstance().getuSerDataModel().getLogin());
@@ -42,4 +42,3 @@ public class AdminPanel extends WebPage{
 		}
 
 	}
-

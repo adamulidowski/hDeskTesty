@@ -14,7 +14,8 @@ import pl.helpdesk.userSession.UserSession;
 import pl.helpdesk.DataAccessObject.CompanyDao;
 import pl.helpdesk.DataAccessObject.UserDao;
 import pl.helpdesk.DataModel.UserDataModel;
-import pl.helpdesk.userpanel.AdminPanel;
+import pl.helpdesk.adminPages.AdminPanel;
+import pl.helpdesk.employeePages.EmployeePanel;
 import pl.helpdesk.userpanel.Panel;
 
 public class Logowanie extends WebPage {
@@ -77,6 +78,8 @@ public class Logowanie extends WebPage {
 						// userDao.closeConection();
 						if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 1) {
 							setResponsePage(AdminPanel.class);
+						} else if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 2){
+							setResponsePage(EmployeePanel.class);
 						} else {
 							setResponsePage(Panel.class);
 						}

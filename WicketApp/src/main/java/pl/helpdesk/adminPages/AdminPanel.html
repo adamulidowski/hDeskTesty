@@ -23,32 +23,45 @@ and open the template in the editor.
     <body>
         <div id="menu"> 
             <ul id="nav"> 
-				<b><font color="white">HELP DESK</font></b>
-               <li><a href="">Pracownicy</a>
+			
+               <li>Pracownicy
                         <ul> 
-                        <li><a href="" >Dodaj</a></li> 
+                        <li><wicket:link>
+                        <a href="DodaniePracownika.html" >Dodaj</a></wicket:link></li> 
                         <li><a href="" >Zarządzaj</a></li> 
                         <li><a href="" >Statystyki</a></li>
                     </ul> 
                 </li> 
 
-                <li><a href="">Firmy</a>
+                <li>Firmy
                         <ul> 
                         <li><a href="" >Dodaj</a></li> 
                         <li><a href="" >Zarządzaj</a></li> 
                         <li><a href="" >Statystyki</a></li>
                     </ul> 
                 </li> 
-                <li><a href="">Klienci</a>
+                <li>Klienci
                         <ul> 
                         <li><a href="" >Dodaj</a></li> 
                         <li><a href="" >Zarządzaj</a></li> 
                         <li><a href="" >Statystyki</a></li>
                     </ul> 
                 </li> 
-                <li><a href="">Profil</a>
+                <li>Profil
+                   <ul> 
+                        <li><a href="" >Mój profil</a></li> 
+                        <li><a href="" >Edytuj</a></li> 
+                    </ul> 
+                
                 </li> 
+<li style="float:right; margin-right:6%;"> 
 
+ 			<form wicket:id="form">
+        
+        
+          <input type="submit" class="wyloguj" id="wyloguj" wicket:id="logOut" value="LOGOUT"/>
+        </form>
+        </li>
 
             </ul>
         </div> 
@@ -62,11 +75,7 @@ and open the template in the editor.
             <div id="tresc1">
              <Span wicket:id="SendedParam"></Span>
              <Span wicket:id="SendedParam2"></Span>
-              <form wicket:id="form">
-        
-        
-          <input type="submit" class="wyloguj" id="wyloguj" wicket:id="logOut" value="LOGOUT"/>
-        </form>
+
             </div>
 
         </div>
