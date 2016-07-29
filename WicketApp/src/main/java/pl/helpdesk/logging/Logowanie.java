@@ -14,7 +14,7 @@ import org.apache.wicket.model.PropertyModel;
 
 
 import pl.helpdesk.userSession.UserSession;
-
+import pl.helpdesk.DataAccessObject.CompanyDao;
 import pl.helpdesk.DataAccessObject.UserDao;
 import pl.helpdesk.DataModel.UserDataModel;
 
@@ -29,6 +29,8 @@ public class Logowanie extends WebPage {
 
 	 
 	private UserDao userDao;
+	
+	//private CompanyDao companyDao;
 	
 	private UserDataModel userDataModel = new UserDataModel();
 
@@ -54,6 +56,7 @@ public class Logowanie extends WebPage {
 				super.onSubmit();
 				
 				userDao = new UserDao();
+				//companyDao = new CompanyDao();
 				try {
 					if((userDao.findUserByLoginAndPassword(userDataModel.getLogin(), userDataModel.getHaslo()).equals("none"))){
 						badInfo.setVisible(Boolean.TRUE);
@@ -70,7 +73,8 @@ public class Logowanie extends WebPage {
 //	
 //					e.printStackTrace();
 //				}
-					userDao.closeConection();
+					//companyDao.addCompany("Firma 1", "Lublin", "Nadbystrzycka", "23564", "21 b");
+					//userDao.closeConection();
 					setResponsePage(Panel.class); 
 					}
 				} catch (NoSuchAlgorithmException e) {

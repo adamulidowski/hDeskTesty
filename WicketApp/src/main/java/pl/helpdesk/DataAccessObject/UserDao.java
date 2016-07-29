@@ -37,6 +37,11 @@ public class UserDao implements Serializable{
 
 	}
     
+	public void closeConection(){
+		 entityM.close();
+	     entityMF.close();
+	}
+    
     public List <UserDataModel> createUserList(){
     	
     	criteriaQuery.select(user);
@@ -88,10 +93,7 @@ public boolean czyBlokowany(String Login){
 	}
 
 
-	public void closeConection(){
-		 entityM.close();
-	     entityMF.close();
-	}
+
 	
 	
 	public String PasswordHash(String password) throws NoSuchAlgorithmException{
