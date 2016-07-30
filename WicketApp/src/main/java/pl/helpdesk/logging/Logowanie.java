@@ -51,31 +51,16 @@ public class Logowanie extends WebPage {
 				super.onSubmit();
 
 				userDao = new UserDao();
-				// companyDao = new CompanyDao();
 				try {
 					if ((userDao.findUserByLoginAndPassword(userDataModel.getLogin(), userDataModel.getHaslo())
 							.equals("none"))) {
 						badInfo.setVisible(Boolean.TRUE);
 					} else {
 						UserSession.getInstance().setuSerDataModel(userDataModel);
-						// UserSession.getInstance().getuSerDataModel().getLogin();
 						UserSession.getInstance().setAttribute("id",
 								userDao.findUserId(UserSession.getInstance().getuSerDataModel().getLogin()));
-						// UserSession.getInstance().setAttribute("haslo",
-						// userDataModel.getHaslo());
 						UserSession.getInstance().setAttribute("blok",
 								userDao.czyBlokowany(UserSession.getInstance().getuSerDataModel().getLogin()));
-
-						// try {
-						// userDao.addUser("admin1", "admin1", "admin1@wp.pl",
-						// "Mariusz", "Róg", 4);
-						// } catch (NoSuchAlgorithmException e) {
-						//
-						// e.printStackTrace();
-						// }
-						// companyDao.addCompany("Firma 1", "Lublin",
-						// "Nadbystrzycka", "23564", "21 b");
-						// userDao.closeConection();
 						if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 1) {
 							setResponsePage(AdminPanel.class);
 						} else if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 2){
@@ -85,7 +70,6 @@ public class Logowanie extends WebPage {
 						}
 					}
 				} catch (NoSuchAlgorithmException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 

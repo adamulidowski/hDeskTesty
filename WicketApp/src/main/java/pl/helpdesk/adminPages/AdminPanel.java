@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 
+import pl.helpdesk.DataAccessObject.UserDao;
 import pl.helpdesk.logging.Logowanie;
 import pl.helpdesk.userSession.UserSession;
 
@@ -31,6 +32,8 @@ public class AdminPanel extends WebPage{
 				@Override
 				public void onSubmit() {
 					super.onSubmit();
+					UserDao userDao= new UserDao();
+					userDao.closeConection();
 					UserSession.getInstance().invalidate();
 					setResponsePage(Logowanie.class); 
 				}
