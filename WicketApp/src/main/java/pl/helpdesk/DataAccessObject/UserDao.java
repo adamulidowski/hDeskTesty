@@ -88,6 +88,20 @@ public class UserDao implements Serializable {
 		}
 		return false;
 	}
+	
+	
+	
+	public boolean emailExist(String Email) {
+
+		createUserList();
+		for (UserDataModel users2 : createUserList()) {
+			if (users2.getEmail().equals(Email)) {
+					return true;
+			}
+		}
+		return false;
+	}
+	
 
 	public String PasswordHash(String password) throws NoSuchAlgorithmException {
 
@@ -190,6 +204,20 @@ public class UserDao implements Serializable {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean nameValidate(String name) {
+
+		String illegal_regex = "[^a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]";
+        Pattern p = Pattern.compile(illegal_regex);
+        Matcher m = p.matcher(name);
+        
+  
+       if(m.find()){
+    	   return false;
+       }else{
+    	   return true;
+       }
 	}
 
 	// Wersja inna:

@@ -4,6 +4,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.text.BadLocationException;
+
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -41,14 +43,29 @@ public class DodaniePracownika extends WebPage {
 		add(form);
 		form.add(logOut);
 
-		String message="error";
-		final Label error=new Label("error", message);
-		error.setVisible(false);
-			
+		//String message="error";
+		
+		final Label badName=new Label("badname", "Wpisz poprawnie imię!");
+		badName.setVisible(false);
+		final Label badSurname=new Label("badsurname", "Wpisz poprawnie nazwisko!");
+		badSurname.setVisible(false);
+		final Label badEmail=new Label("bademail", "Wpisz poprawnie email!");
+		badEmail.setVisible(false);
+		final Label loginLength=new Label("loginlength", "Login musi zawierac od 5 do 15 znaków!");
+		loginLength.setVisible(false);
+		final Label passLength=new Label("passlength", "Hasło musi zawierac od 5 do 15 znaków!");
+		passLength.setVisible(false);
+		final Label userExist=new Label("userExist", "Użytkownik o podanym loginie istnieje w systemie!");
+		userExist.setVisible(false);
+		final Label emailExist=new Label("emailExist", "Użytkownik o podanym adresie istnieje w systemie!");
+		emailExist.setVisible(false);
+		final Label przeszlo=new Label("przeszlo", "Działa!");
+		przeszlo.setVisible(false);
+
 		
 			UserDataModel userDataModel = new UserDataModel();
 			final UserDao userDao = new UserDao();
-
+			
 			final TextField<String> imie = new TextField<String>("imie",
 					new PropertyModel<String>(userDataModel, "imie"));
 			final TextField<String> nazwisko = new TextField<String>("nazwisko",
@@ -60,7 +77,7 @@ public class DodaniePracownika extends WebPage {
 
 			final PasswordTextField haslo = new PasswordTextField("haslo",
 					new PropertyModel<String>(userDataModel, "haslo"));
-
+			
 			Form<?> creating = new Form("creating") {
 				/**
 				 * 
@@ -70,6 +87,16 @@ public class DodaniePracownika extends WebPage {
 				@Override
 				public void onSubmit() {					
 					super.onSubmit();
+					badName.setVisible(false);
+					badSurname.setVisible(false);
+					badEmail.setVisible(false);
+					loginLength.setVisible(false);
+					passLength.setVisible(false);
+					userExist.setVisible(false);
+					emailExist.setVisible(false);
+					przeszlo.setVisible(false);
+					
+					
 					
 					UserDao user = new UserDao();
 					String imie2 = imie.getInput();
@@ -78,44 +105,75 @@ public class DodaniePracownika extends WebPage {
 					String login2 = login.getInput();
 					String haslo2 = haslo.getInput();
 					
+					boolean IsOk=true;
 					
-					error.setVisible(false);
-					if (userDao.emailValidate(email2) == false) {
-						error.setVisible(true);
-						
-					} else if (login2.length() < 4 || haslo2.length() < 4 || login2.length() > 15 || haslo2.length() > 15
-							|| login2.isEmpty() || haslo2.isEmpty()) {
-						error.setVisible(true);
-						
+					//error.setVisible(false);
+					if (userDao.nameValidate(imie2) == false || imie2.length() < 2 || imie2.length() >20 || imie2.isEmpty()) {
+						badName.setVisible(true);	
+						IsOk=false;
+					} 
+					
+					if( userDao.nameValidate(nazwisko2) == false || nazwisko2.length() < 2 || nazwisko2.length() >20 || nazwisko2.isEmpty()){
+						badSurname.setVisible(true);
+						IsOk=false;
+					} 
+					
+					if(userDao.emailValidate(email2) == false ){
+						badEmail.setVisible(true);
+						IsOk=false;
+					} else if(userDao.emailExist(email2)==true){
+						emailExist.setVisible(true);
+						IsOk=false;
+					}
+					
+					if (login2.length() < 4 ||  login2.length() > 15 || login2.isEmpty()){
+						loginLength.setVisible(true);
+						IsOk=false;
 					} else if (user.userType(login2) != 0) {
-						error.setVisible(true);
+						userExist.setVisible(true);	
+						IsOk=false;
+					}
+					
+					if (haslo2.length() < 4 ||  haslo2.length() > 15 || haslo2.isEmpty()){
+					passLength.setVisible(true);
+						IsOk=false;
+					} 
+
+
+					
+					
+					if(IsOk){
+						przeszlo.setVisible(true);
 						
-					} else {
+//						try {
+//							user.addUser(login2, haslo2, email2 ,imie2, nazwisko2,  1);
+//						} catch (NoSuchAlgorithmException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//						setResponsePage(AdminPanel.class);
+					}
 
-						try {
-							user.addUser(login2, haslo2, email2 ,imie2, nazwisko2,  1);
-						} catch (NoSuchAlgorithmException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-
-						setResponsePage(Logowanie.class);
 
 					}
 					
 					//error.setVisible(true);
-				}
+				
 			};
 
 
-			//PageParameters pageParameters = new PageParameters();
-			//System.out.println(pageParameters.get("number"));
-			//System.out.println(UserSession.getInstance().getAttribute("nick"));
+			
+			creating.add(badName);
+			creating.add(badSurname);
+			creating.add(badEmail);
+			creating.add(loginLength);
+			creating.add(passLength);
+			creating.add(userExist);
+			creating.add(emailExist);
+			add(przeszlo);
+			
+			
 			add(creating);
-			//add(userExist);
-			//add(length);
-			//add(userAdded);
-			add(error);
 			creating.add(login);
 			creating.add(imie);
 			creating.add(nazwisko);
