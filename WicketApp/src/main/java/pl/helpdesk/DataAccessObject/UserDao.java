@@ -38,11 +38,20 @@ public class UserDao implements Serializable {
 
 	}
 
+	/**
+	 * Zamyka połączenie z bazą danych. Wywyoływana przy wylogowaniu z systemu.
+	 * 
+	 */
 	public void closeConection() {
 		entityM.close();
 		entityMF.close();
 	}
 
+	/**
+	 * Tworzy listę wszystkich użytkowników systemu.
+	 * 
+	 * @return Lista wszystkich użytkowników.
+	 */
 	public List<UserDataModel> createUserList() {
 
 		criteriaQuery.select(user);
@@ -53,6 +62,17 @@ public class UserDao implements Serializable {
 		return users;
 	}
 
+	/**
+	 * Znajduje użytkownika po loginie i haśle.
+	 * 
+	 * @param Login
+	 *            Login użytkownika.
+	 * @param Passw
+	 *            Gasło użytkownika.
+	 * @return Login, jeżeli użytkownik o podanym loginie i haśle istnieje,
+	 *         "none"m jeżeli użytkownika nie ma w tabeli.
+	 * @throws NoSuchAlgorithmException
+	 */
 	public String findUserByLoginAndPassword(String Login, String Passw) throws NoSuchAlgorithmException {
 
 		createUserList();
@@ -65,6 +85,14 @@ public class UserDao implements Serializable {
 
 	}
 
+	/**
+	 * Znajduje id użytkownika o podanym w argumencie loginie.
+	 * 
+	 * @param Login
+	 *            Login szukanego użytkownika.
+	 * @return Id użytkownika, jeżeli istnieje, "0", jeżeli nie użytkownika o
+	 *         podanym loginie.
+	 */
 	public int findUserId(String Login) {
 
 		createUserList();
@@ -76,6 +104,14 @@ public class UserDao implements Serializable {
 		return 0;
 	}
 
+	/**
+	 * Sprawdza, czy użytkownik o podanym lloginie jest blokowany.
+	 * 
+	 * @param Login
+	 *            Login użytkownika.
+	 * @return True, jeżeli użytkownik ma status zablokowanego. False, jeżeli
+	 *         użyktownik nie jest zablokowany.
+	 */
 	public boolean czyBlokowany(String Login) {
 
 		createUserList();
@@ -88,21 +124,34 @@ public class UserDao implements Serializable {
 		}
 		return false;
 	}
-	
-	
-	
+
+	/**
+	 * Sprawdza, czy podany Email i stnieje w systemie.
+	 * 
+	 * @param Email
+	 *            Szukany Email.
+	 * @return True, jeżeli szukany email istnieje w bazie. False w przeciwnym
+	 *         wypadku.
+	 */
 	public boolean emailExist(String Email) {
 
 		createUserList();
 		for (UserDataModel users2 : createUserList()) {
 			if (users2.getEmail().equals(Email)) {
-					return true;
+				return true;
 			}
 		}
 		return false;
 	}
-	
 
+	/**
+	 * Haszuje podane w parametrze hasło algorytmem "SHA-256".
+	 * 
+	 * @param password
+	 *            Hasło do zahaszowania.
+	 * @return Zahaszowane hasło.
+	 * @throws NoSuchAlgorithmException
+	 */
 	public String PasswordHash(String password) throws NoSuchAlgorithmException {
 
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -117,6 +166,24 @@ public class UserDao implements Serializable {
 		return sb.toString();
 	}
 
+	/**
+	 * Dodaje do systemu użytkownika o podanych danych.
+	 * 
+	 * @param login
+	 *            Login użytkownika.
+	 * @param pass
+	 *            Hasło użytkownika.
+	 * @param email
+	 *            Email użytkownika.
+	 * @param imie
+	 *            Imię użytkownika.
+	 * @param nazwisko
+	 *            Nazwisko użytkownika.
+	 * @param rodzaj
+	 *            Rodzaj użytkownika(1-pracownik, 2-przedstawiciel, 3-klient,
+	 *            4-administrator).
+	 * @throws NoSuchAlgorithmException
+	 */
 	public void addUser(String login, String pass, String email, String imie, String nazwisko, int rodzaj)
 			throws NoSuchAlgorithmException {
 
@@ -160,18 +227,15 @@ public class UserDao implements Serializable {
 
 	}
 
-	// public void addEmployee(int id_uzytkownika){
-	//
-	// EmployeeDataModel employeeDataModel = new EmployeeDataModel();
-	//
-	// employeeDataModel.setId_uzytkownika(id_uzytkownika);
-	//
-	// entityM.getTransaction().begin();
-	// entityM.persist(employeeDataModel);
-	// entityM.getTransaction().commit();
-	//
-	// }
-
+	/**
+	 * Spradza typ użytkownika o podanym loginie.
+	 * 
+	 * @param login
+	 *            Login użytkownika.
+	 * @return Liczba odpowiadająca typowi użytkownika(1-pracownik,
+	 *         2-przedstawiciel, 3-klient, 4-administrator) lub "0" gdy nie ma
+	 *         użytkownika o podanym loginie.
+	 */
 	public int userType(String login) {
 
 		AdminDao adminDao = new AdminDao();
@@ -179,12 +243,12 @@ public class UserDao implements Serializable {
 
 		for (EmployeeDataModel employeeDM : employeeDao.createEmployeeList()) {
 			if (employeeDM.getId_uzytkownika() == (findUserId(login))) {
-				return 2;
+				return 1;
 			}
 		}
 		for (AdminDataModel adminDM : adminDao.createAdminList()) {
 			if (adminDM.getId_uzytkownika() == (findUserId(login))) {
-				return 1;
+				return 4;
 			}
 		}
 
@@ -192,6 +256,12 @@ public class UserDao implements Serializable {
 
 	}
 
+	/**
+	 * Waliduje adres email.
+	 * 
+	 * @param email Ciąg znaków do spradzenia.
+	 * @return True, jeżeli email jest poprawny. W przeciwnym wypadku false.
+	 */
 	public boolean emailValidate(String email) {
 
 		Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
@@ -205,19 +275,24 @@ public class UserDao implements Serializable {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * Waliduje nazwy zawierające jedynie litery, włączając polskie znaki.
+	 * 
+	 * @param name Ciąg znaków do alidacji.
+	 * @return True, jeżeli ciąg znaków jest poprawny. W przeciwnym wypadku false.
+	 */
 	public boolean nameValidate(String name) {
 
 		String illegal_regex = "[^a-zA-ZąćęłńóśźżĄĘŁŃÓŚŹŻ]";
-        Pattern p = Pattern.compile(illegal_regex);
-        Matcher m = p.matcher(name);
-        
-  
-       if(m.find()){
-    	   return false;
-       }else{
-    	   return true;
-       }
+		Pattern p = Pattern.compile(illegal_regex);
+		Matcher m = p.matcher(name);
+
+		if (m.find()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	// Wersja inna:

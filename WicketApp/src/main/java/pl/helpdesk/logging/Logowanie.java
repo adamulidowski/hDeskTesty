@@ -32,12 +32,16 @@ public class Logowanie extends WebPage {
 
 		final TextField<String> login = new TextField<String>("login",
 				new PropertyModel<String>(userDataModel, "login"));
-
+		
 		PasswordTextField haslo = new PasswordTextField("haslo", new PropertyModel<String>(userDataModel, "haslo"));
 
 		final Label badInfo = new Label("message", "Złe dane!");
-
 		badInfo.setVisible(Boolean.FALSE);
+		
+		final Label userBlocked = new Label("blocked", "Konto zablokowane!");
+		userBlocked.setVisible(Boolean.FALSE);
+		
+		
 
 		Form<?> form = new Form<Void>("form") {
 			/**
@@ -49,21 +53,25 @@ public class Logowanie extends WebPage {
 			public void onSubmit() {
 
 				super.onSubmit();
-
+				
 				userDao = new UserDao();
+				badInfo.setVisible(Boolean.FALSE);
+				userBlocked.setVisible(Boolean.FALSE);
 				try {
 					if ((userDao.findUserByLoginAndPassword(userDataModel.getLogin(), userDataModel.getHaslo())
 							.equals("none"))) {
 						badInfo.setVisible(Boolean.TRUE);
+					} else if(userDao.czyBlokowany(userDataModel.getLogin())==true){						
+						userBlocked.setVisible(Boolean.TRUE);
 					} else {
 						UserSession.getInstance().setuSerDataModel(userDataModel);
 						UserSession.getInstance().setAttribute("id",
 								userDao.findUserId(UserSession.getInstance().getuSerDataModel().getLogin()));
 						UserSession.getInstance().setAttribute("blok",
 								userDao.czyBlokowany(UserSession.getInstance().getuSerDataModel().getLogin()));
-						if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 1) {
+						if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 4) {
 							setResponsePage(AdminPanel.class);
-						} else if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 2){
+						} else if (userDao.userType(UserSession.getInstance().getuSerDataModel().getLogin()) == 1){
 							setResponsePage(EmployeePanel.class);
 						} else {
 							setResponsePage(Panel.class);
@@ -80,5 +88,6 @@ public class Logowanie extends WebPage {
 		form.add(haslo);
 		add(form);
 		add(badInfo);
+		add(userBlocked);
 	}
 }

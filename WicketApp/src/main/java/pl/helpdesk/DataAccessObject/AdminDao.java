@@ -26,7 +26,11 @@ public class AdminDao {
 		 entityM.close();
 	     entityMF.close();
 	}
-	
+	/**
+	 * Tworzy listę administratorów.
+	 * 
+	 * @return lista administratorów.
+	 */
     public List <AdminDataModel> createAdminList(){
     	
     	criteriaQuery.select(admin);

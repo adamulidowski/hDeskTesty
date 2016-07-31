@@ -27,6 +27,11 @@ public class EmployeeDao {
 	     entityMF.close();
 	}
 	
+	/**
+	 * Tworzy listę pracowników Helpdesku.
+	 * 
+	 * @return Lista pracowników.
+	 */
     public List <EmployeeDataModel> createEmployeeList(){
     	
     	criteriaQuery.select(employee);

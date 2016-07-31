@@ -55,9 +55,9 @@ public class DodaniePracownika extends WebPage {
 		badSurname.setVisible(false);
 		final Label badEmail = new Label("bademail", "Wpisz poprawnie email!");
 		badEmail.setVisible(false);
-		final Label loginLength = new Label("loginlength", "Login musi zawierac od 5 do 15 znaków!");
+		final Label loginLength = new Label("loginlength", "Login musi zawierac od 4 do 15 znaków!");
 		loginLength.setVisible(false);
-		final Label passLength = new Label("passlength", "Hasło musi zawierac od 5 do 15 znaków!");
+		final Label passLength = new Label("passlength", "Hasło musi zawierac od 4 do 15 znaków!");
 		passLength.setVisible(false);
 		final Label userExist = new Label("userExist", "Użytkownik o podanym loginie istnieje w systemie!");
 		userExist.setVisible(false);
@@ -129,7 +129,7 @@ public class DodaniePracownika extends WebPage {
 				if (login2.length() < 4 || login2.length() > 15 || login2.isEmpty()) {
 					loginLength.setVisible(true);
 					IsOk = false;
-				} else if (user.userType(login2) != 0) {
+				} else if (user.findUserId(login2) != 0) {
 					userExist.setVisible(true);
 					IsOk = false;
 				}

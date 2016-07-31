@@ -28,6 +28,16 @@ public class CompanyDao {
 	}
 
 
+    /**
+     * 
+     * Dodaje nową firmę.
+     * 
+     * @param nazwa Nazwa firmy.
+     * @param miejscowosc Miejscowość, w której znajduje się firma.
+     * @param ulica Ulica, na której znajduje się firma
+     * @param kod_pocztowy Kod pocztowy siedziby firmy.
+     * @param numer Numer do firmy.
+     */
 public void addCompany( String nazwa, String miejscowosc, String ulica, String kod_pocztowy, String numer){
 	
     
