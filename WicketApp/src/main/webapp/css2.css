@@ -9,6 +9,7 @@ and open the template in the editor.
 */
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400,700&subset=latin,latin-ext);
 
+
 body{
     background-color:#404040;
 
@@ -29,22 +30,23 @@ a:hover {
 
 #menu{
 	font-family: 'Josefin Sans', sans-serif;   
-    background-color:  #303030;
+   // background-color:  #303030;
 	z-index: 1;
 	width:100%;
-    line-height:45px;
+    line-height:40px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     color:white;
+	
 
 }
 
 
 
 #kontener{
-    margin-top:7%;
+    margin-top:6%;
     width:70%;
     margin-left:auto;
     margin-right:auto;
@@ -53,19 +55,22 @@ a:hover {
 
 
 #nav{
+	
     float: inside;
     font-size:18px;
     text-align:center;
     overflow:hidden;
+	
 }
 
 ul#nav li{
 	color:white;
-    width:160px;
+    width: 120px;
     list-style-type:none;
     float:left;
     background-color:  #303030;
     margin-left:3px;
+	opacity: 0.8;
 
 }
 
@@ -79,6 +84,7 @@ ul#nav li:hover{
     font-weight: bold;
     float:left;
     background-color:black;
+	opacity: 1;
 }
 
 
@@ -87,24 +93,28 @@ ul#nav li a{
     display: block;
     text-decoration: none;
     position:relative; 
+	opacity: 1;
 }
 
 
 ul#nav li li a{
-    width:160px;
+    width: 120px;
+	opacity: 1;
 }
 
 ul#nav li ul{
     font-size:12px;
     overflow: hidden;
     display: none;
+	opacity: 1;
 }
 
 ul#nav li:hover ul{
     position: absolute;
     padding: 0;
     display: block;
-    width: 160px;
+    width: 120px;
+	opacity: 1;
 }
 
 .opcje1{
@@ -112,6 +122,7 @@ ul#nav li:hover ul{
     color:white;
     font-size: 18px;
     padding:10px;
+	opacity: 1;
 }
 
 .opcje1:hover{
@@ -120,6 +131,7 @@ ul#nav li:hover ul{
     cursor: pointer;
     color:white;
     font-weight: bold;
+	opacity: 1;
 }
 
 #tytul{
@@ -154,10 +166,6 @@ img{
 }
 
 
-
-
-
-
 #ukryj{
     font-family: 'Josefin Sans', sans-serif;
     color: white;
@@ -180,8 +188,8 @@ img{
     color: white;
     font-size:20px;
     display: block;
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 120px;
     background-color: #B04862;
     border:none;
     text-align:center;
