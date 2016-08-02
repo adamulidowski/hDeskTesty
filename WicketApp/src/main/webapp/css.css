@@ -73,7 +73,7 @@ color:black;
 
 #cytat{
     line-height:40px;
-    text-align:center;
+    padding-left:10%;
     margin-top:10px;
     background-color:  #303030;
     height:40px;
@@ -89,7 +89,6 @@ color:black;
     padding-bottom:2%;
 	font-size:25px;
     display:table-cell;
-    margin-top:0.5%;
     height:300px;
     float:left;
     width: 45.5%;
@@ -106,16 +105,15 @@ input[type="password"] {
     width: 200px;
 	height:25px;
 }
+
 #cpp{
 	padding-top: 2%;
     padding-left:2%;
     padding-right:2%;
     padding-bottom:2%;
-	border-radius: 0px 60px 0px 0px;
-    margin-top:0.5%;
     height:300px;
-    float:right;
-    width: 45.5%;
+    float:left;
+    width: 46.5%;
 	background-color: #dedede;
 
 }
@@ -132,19 +130,19 @@ input[type="password"] {
 }
 .ukryj:hover{
         cursor: pointer;
+		background-color: #0c5b4b;
 }
 
 #stopka{
-    margin-top: 2%;
     height:45px;
     line-height: 45px;
-    clear:both;
+   // clear:both;
     color:white;
     background-color: black;
     text-align:center;
     font-size:18px;
-    position:fixed;
-    bottom:0;
+   // position:fixed;
+    //bottom:0;
     width:100%;
-    z-index: -1;
+    //z-index: -1;
 }
