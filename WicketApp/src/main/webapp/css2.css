@@ -11,7 +11,7 @@ and open the template in the editor.
 
 
 body{
-    background-color:#404040;
+    background-color:#181629;
 
 }
 
@@ -30,7 +30,7 @@ a:hover {
 
 #menu{
 	font-family: 'Josefin Sans', sans-serif;   
-    background-color:  #404040;
+    background-color: #181629;
 	z-index: 1;
 	width:100%;
     line-height:40px;
@@ -69,7 +69,7 @@ ul#nav li{
     width: 120px;
     list-style-type:none;
     float:left;
-    background-color:  #404040;
+    background-color:  #181629;
 	
 
 }
@@ -83,8 +83,10 @@ ul#nav li:hover{
     list-style-type: none;
     font-weight: bold;
     float:left;
-    background-color:black;
-
+	//text-decoration: underline;
+    background-color:#151324;
+	border-bottom-width: medium;
+	border-bottom-color: white;
 }
 
 
@@ -126,7 +128,7 @@ ul#nav li:hover ul{
 }
 
 .opcje1:hover{
-    background-color:black;
+    background-color:#181629;
     color:white;
     cursor: pointer;
     color:white;
@@ -135,6 +137,7 @@ ul#nav li:hover ul{
 }
 
 #tytul{
+
 	margin-top:80px;
     font-family: 'Josefin Sans', sans-serif;
     line-height:60px;
@@ -143,7 +146,7 @@ ul#nav li:hover ul{
     color:white;
     font-size:30px;
     height:60px;
-    background-color: #128870;  
+    background-color: #181629;
 }
 
 
@@ -153,7 +156,8 @@ img{
 
 
 #tresc1{
-    background-color: #dedede;
+	
+    background-color: #e7e7e9;
     font-family: 'Josefin Sans', sans-serif;
     width: 80%;
     min-height: 500px;
@@ -173,7 +177,7 @@ img{
     display: block;
     height: 50px;
     width: 200px;
-    background-color: #128870;
+    background-color: 	#181629;
     border:none;
     text-align:center;
     float:right;
@@ -190,13 +194,16 @@ img{
     display: block;
     height: 40px;
     width: 120px;
-    background-color: #B04862;
+    background-color: #181629;
     border:none;
     text-align:center;
 }
 
 #wyloguj:hover{
         cursor: pointer;
+		//background-color:black;
+		font-weight: bold;
+		
 }
 
 img{

@@ -10,7 +10,7 @@ and open the template in the editor.
 @import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400,700&subset=latin,latin-ext);
 
 body{
-    background-color:#404040;
+    background-color:#181629;
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -31,7 +31,7 @@ color:black;
     font-size:50px;
     text-align:center;
     height:100px;
-    background-color: #128870;
+    background-color: #181629;
 }
 
 #tytul:hover{
@@ -43,7 +43,7 @@ color:black;
     line-height:45px;
     text-align:center;
     width: 33.3%;
-    background-color:  #303030;
+    background-color:  #181629;
     color:white;
     float:right;
     height:45px;
@@ -51,8 +51,9 @@ color:black;
 }
 
 #onas:hover{
-    background-color:black;    
+    background-color:#181629;    
     cursor: pointer;
+	font-weight: bold;
 
 }
 
@@ -60,22 +61,23 @@ color:black;
     line-height:45px;
     text-align:center;
     width: 33.3%;
-    background-color: #303030;
+    background-color: #181629;
     color:white;
     float:right;
     height:45px;
     
 }
 #napisz:hover{
-    background-color:black;
+    background-color:#181629;
     cursor: pointer;
+	font-weight: bold;
 }
 
 #cytat{
     line-height:40px;
     padding-left:10%;
     margin-top:10px;
-    background-color:  #303030;
+    background-color:  #181629;
     height:40px;
     color:white;
 }
@@ -92,7 +94,7 @@ color:black;
     height:300px;
     float:left;
     width: 45.5%;
-    background-color: #dedede;
+    background-color: #e7e7e9;
     font-family: 'Josefin Sans', sans-serif;
 	text-align:middle;
 
@@ -114,7 +116,7 @@ input[type="password"] {
     height:300px;
     float:left;
     width: 46.5%;
-	background-color: #dedede;
+	background-color: #e7e7e9;
 
 }
 
@@ -125,7 +127,7 @@ input[type="password"] {
     font-size:20px;
     height: 50px;
     width: 200px;
-    background-color: #128870;
+    background-color: #181629;
     border:none;
 }
 .ukryj:hover{
