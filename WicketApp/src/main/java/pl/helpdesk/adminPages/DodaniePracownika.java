@@ -143,8 +143,7 @@ public class DodaniePracownika extends WebPage {
 					
 
 					 try {
-					 user.addUser(login2, haslo2, email2 ,imie2, nazwisko2,
-					 1);
+					 user.addUser(login2, haslo2, email2 ,imie2, nazwisko2, 1);
 					 } catch (NoSuchAlgorithmException e) {
 					 // TODO Auto-generated catch block
 					 e.printStackTrace();

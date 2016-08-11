@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,11 +14,14 @@ public class AdminDataModel {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "Id_Administrator")
+	@Column(name = "Id_Administrator", columnDefinition="INTEGER(4) NOT NULL")
 	private int id;
-	@Column(name = "Id_uzytkownika")
-	private int id_uzytkownika;
 
+	
+	@OneToOne
+	@JoinColumn(name = "Id_uzytkownika", nullable=false)
+	private UserDataModel userDataModel;
+	
 	public int getId() {
 		return id;
 	}
@@ -25,11 +30,14 @@ public class AdminDataModel {
 		this.id = id;
 	}
 
-	public int getId_uzytkownika() {
-		return id_uzytkownika;
+	public UserDataModel getUserDataModel() {
+		return userDataModel;
 	}
 
-	public void setId_uzytkownika(int id_uzytkownika) {
-		this.id_uzytkownika = id_uzytkownika;
+	public void setUserDataModel(UserDataModel userDataModel) {
+		this.userDataModel = userDataModel;
 	}
+
+
+
 }

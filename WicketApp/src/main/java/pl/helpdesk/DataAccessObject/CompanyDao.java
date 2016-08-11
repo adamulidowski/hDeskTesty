@@ -52,7 +52,6 @@ public void addCompany( String nazwa, String miejscowosc, String ulica, String k
     entityM.getTransaction().begin();
     entityM.persist(companyDataModel);
     entityM.getTransaction().commit();
-    
-    
-}
+  
+	}
 }

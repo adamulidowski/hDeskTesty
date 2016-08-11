@@ -3,8 +3,6 @@ package pl.helpdesk.DataAccessObject;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,7 +13,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-
 import javax.persistence.criteria.Root;
 
 import pl.helpdesk.DataModel.AdminDataModel;
@@ -184,6 +181,7 @@ public class UserDao implements Serializable {
 	 *            4-administrator).
 	 * @throws NoSuchAlgorithmException
 	 */
+	
 	public void addUser(String login, String pass, String email, String imie, String nazwisko, int rodzaj)
 			throws NoSuchAlgorithmException {
 
@@ -207,8 +205,9 @@ public class UserDao implements Serializable {
 		entityM.getTransaction().commit();
 
 		if (rodzaj == 1) {
+			
 			EmployeeDataModel employeeDataModel = new EmployeeDataModel();
-			employeeDataModel.setId_uzytkownika(userDataModel.getId());
+			employeeDataModel.setUserDataModel(userDataModel);
 
 			entityM.getTransaction().begin();
 			entityM.persist(employeeDataModel);
@@ -219,7 +218,7 @@ public class UserDao implements Serializable {
 			// tworzy klienta
 		} else if (rodzaj == 4) {
 			AdminDataModel adminDataModel = new AdminDataModel();
-			adminDataModel.setId_uzytkownika(userDataModel.getId());
+			adminDataModel.setUserDataModel(userDataModel);
 			entityM.getTransaction().begin();
 			entityM.persist(adminDataModel);
 			entityM.getTransaction().commit();
@@ -242,12 +241,12 @@ public class UserDao implements Serializable {
 		EmployeeDao employeeDao = new EmployeeDao();
 
 		for (EmployeeDataModel employeeDM : employeeDao.createEmployeeList()) {
-			if (employeeDM.getId_uzytkownika() == (findUserId(login))) {
+			if (employeeDM.getUserDataModel().getId() == (findUserId(login))) {
 				return 1;
 			}
 		}
 		for (AdminDataModel adminDM : adminDao.createAdminList()) {
-			if (adminDM.getId_uzytkownika() == (findUserId(login))) {
+			if (adminDM.getUserDataModel().getId() == (findUserId(login))) {
 				return 4;
 			}
 		}

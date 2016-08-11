@@ -11,6 +11,7 @@
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hdtest"/>
          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
          <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+       
       </properties>
    </persistence-unit>
    </persistence>

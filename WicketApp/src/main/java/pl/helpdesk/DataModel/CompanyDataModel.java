@@ -9,21 +9,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "firmy")
 public class CompanyDataModel {
-	// Klasa reprezentująca tabelę firmy
 
 	@Id
 	@GeneratedValue
-	@Column(name = "Id_Firma")
+	@Column(name = "Id_Firma", columnDefinition="INTEGER(5) NOT NULL")
 	private int id;
-	@Column(name = "Nazwa")
+	
+	@Column(name = "Nazwa", columnDefinition="VARCHAR(100) NOT NULL")
 	private String nazwa;
-	@Column(name = "Ulica")
+	
+	@Column(name = "Ulica", columnDefinition="VARCHAR(30) NOT NULL")
 	private String ulica;
-	@Column(name = "Numer")
+	
+	@Column(name = "Numer", columnDefinition="VARCHAR(11) NOT NULL")
 	private String numer;
-	@Column(name = "Kod_pocztowy")
+	
+	@Column(name = "Kod_pocztowy", columnDefinition="CHAR(5) NOT NULL")
 	private String kod_pocztowy;
-	@Column(name = "Miejscowosc")
+	
+	@Column(name = "Miejscowosc", columnDefinition="VARCHAR(30) NOT NULL")
 	private String miejscowosc;
 
 	public int getId() {
