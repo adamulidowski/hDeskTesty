@@ -213,7 +213,7 @@ public class UserDao implements Serializable {
 			entityM.persist(employeeDataModel);
 			entityM.getTransaction().commit();
 		} else if (rodzaj == 2) {
-			// tworzy przedstawiciela
+			// tworzy przedstawiciela.
 		} else if (rodzaj == 3) {
 			// tworzy klienta
 		} else if (rodzaj == 4) {
